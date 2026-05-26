@@ -1,0 +1,64 @@
+# --------------------------------------------------------
+# FASE 5 - EVALUACIÓN FINAL POA
+# Problema 2: Promoción en menú de restaurante
+# Estudiante: Daniel Felipe Garcia Rojas
+# # --------------------------------------------------------
+
+# Función para calcular el precio final del producto
+def calcular_precio_final(categoria, precio_base, categoria_objetivo, umbral):
+    
+    # Condición para aplicar descuento
+    if categoria == categoria_objetivo and precio_base > umbral:
+        descuento = precio_base * 0.15
+        precio_final = precio_base - descuento
+    else:
+        precio_final = precio_base
+
+    return precio_final
+
+
+# Matriz del menú del restaurante
+# Formato:
+# [Nombre del Producto, Categoría, Precio Base]
+
+menu = [
+    ["Hamburguesa", "Comida", 25000],
+    ["Pizza", "Comida", 35000],
+    ["Gaseosa", "Bebida", 5000],
+    ["Jugo Natural", "Bebida", 12000],
+    ["Ensalada", "Comida", 18000],
+    ["Helado", "Postre", 10000]
+]
+
+
+# Variables de la promoción
+categoria_objetivo = "Comida"
+umbral_precio = 20000
+
+
+# Título del programa
+print("\nMENÚ DEL RESTAURANTE CON PROMOCIÓN")
+print("=" * 50)
+
+
+# Recorrer la matriz con un ciclo for
+for producto in menu:
+
+    nombre = producto[0]
+    categoria = producto[1]
+    precio_base = producto[2]
+
+    # Llamado de la función
+    precio_final = calcular_precio_final(
+        categoria,
+        precio_base,
+        categoria_objetivo,
+        umbral_precio
+    )
+
+    # Mostrar resultados
+    print(f"Producto: {nombre}")
+    print(f"Categoría: {categoria}")
+    print(f"Precio base: ${precio_base:,.0f}")
+    print(f"Precio final: ${precio_final:,.0f}")
+    print("=" * 50)
